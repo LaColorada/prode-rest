@@ -1,0 +1,11 @@
+.db*
+tests
+doc
+.git*
+Contribuitors.md
+LICENSE
+README.md
+Dockerfile
+docker-compose.yml
+env
+.dockerignore

@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  drf-api:
+    build: .
+    container_name: drf-api
+    environment:
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=pgdb
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pgdb
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+
+  pgdb:
+    image: postgres:13
+    container_name: pgdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    # ports:
+    #   - "5432:5432"
+
+    # pgadmin:
+    #   image: dpage/pgadmin4
+    #   container_name: pgdbadmin
+    #   depends_on:
+    #     - pgdb
+    #   ports:
+    #     - "5051:80"
+    #   environment:
+    #     PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+    #     PGADMIN_DEFAULT_PASSWORD: root
+    #   restart: always
+volumes:
+  postgres_data:
