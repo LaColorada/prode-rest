@@ -1,36 +1,27 @@
 from pathlib import Path
 
 import os
-from django.forms import EmailField
 
-from dotenv import load_dotenv
-
-load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+print(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG")
+DEBUG = os.environ.get("DEBUG")
 
-ALLOWED_HOSTS = [
-    "*"
-    # "localhost"
-    # ,"*.heroku.com"
-]
+ALLOWED_HOSTS = ["*"]
 
 # Needed for django.contrib.sites
 SITE_ID = 1
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -43,11 +34,11 @@ INSTALLED_APPS = [
     # REST Framework
     "rest_framework",
     "rest_framework.authtoken",
-    # AllAuth
+    # AllAuth: Required by dj_rest_auth for registration
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    # Rest auth fork
+    # REST Authentication Package
     "dj_rest_auth",
     "dj_rest_auth.registration",
     # Project applications
@@ -72,7 +63,7 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -100,11 +91,6 @@ WSGI_APPLICATION = "core.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        # "NAME": "postgres",
-        # "USER": "postgres",
-        # "PASSWORD": "postgres",
-        # "HOST": "pgdb",
-        # "PORT": 5432,
         "NAME": os.environ.get("DB_NAME"),
         "USER": os.environ.get("DB_USER"),
         "PASSWORD": os.environ.get("DB_PASSWORD"),
@@ -158,10 +144,30 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Custom user model
 AUTH_USER_MODEL = "user.User"
 
+# REST Framework configuration
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
     ]
+}
+
+# Rest auth functionality is based on allauth features
+REST_AUTH_REGISTER_SERIALIZERS = {
+    "REGISTER_SERIALIZER": "user.serializers.RegistrationSerializer",
+}
+
+REST_AUTH_SERIALIZERS = {
+    "LOGIN_SERIALIZER": "user.serializers.LoginSerializer",
+    "USER_DETAILS_SERIALIZER": "user.serializers.DetailSerializer",
+    "PASSWORD_RESET_CONFIRM_SERIALIZER": "user.serializers.PasswordResetConfirmSerializer",
+}
+
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = "my-app-auth"
+JWT_AUTH_REFRESH_COOKIE = "my-refresh-token"
+
+SIMPLE_JWT = {
+    "ROTATE_REFRESH_TOKENS": True,
 }
 
 
@@ -173,8 +179,10 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
+
 # Email send in console to simplify the email client
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
 
 # AllAuth settings for the user with email required, username not required,
 # email as account authentication method, mandatory email verification,

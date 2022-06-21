@@ -1,7 +1,13 @@
+from django.db import transaction
+from rest_framework import serializers
+
 from django.contrib.auth import get_user_model, authenticate
 from django.utils.translation import gettext_lazy as _
 
-from rest_framework import serializers
+from dj_rest_auth.registration.serializers import RegisterSerializer
+from dj_rest_auth.serializers import LoginSerializer, PasswordResetConfirmSerializer
+
+from user.models import Player
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -41,6 +47,18 @@ class UserSerializer(serializers.ModelSerializer):
             return user
 
 
+class PlayerSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Forecast model
+    """
+
+    user = UserSerializer()
+
+    class Meta:
+        model = Player
+        fields = "__all__"
+
+
 class AuthTokenSerializer(serializers.Serializer):
     """
     Serializer for the user authentication object
@@ -69,3 +87,32 @@ class AuthTokenSerializer(serializers.Serializer):
 
         attrs["user"] = user
         return attrs
+
+
+################ CUSTOM REST AUTH SERIALIZERS #############################
+class RegistrationSerializer(RegisterSerializer):
+    username = None
+    password1 = serializers.CharField(style={"input_type": "password"})
+    password2 = serializers.CharField(style={"input_type": "password"})
+
+    @transaction.atomic
+    def save(self, request):
+        """Define transaction.atomic to rollback in case of error"""
+        user = super().save(request)
+        user.save()
+        return user
+
+
+class LoginSerializer(LoginSerializer):
+    username = None
+
+
+class DetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ["email"]
+
+
+class PasswordResetConfirmSerializer(PasswordResetConfirmSerializer):
+    new_password1 = serializers.CharField(style={"input_type": "password"})
+    new_password2 = serializers.CharField(style={"input_type": "password"})

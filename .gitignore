@@ -2,3 +2,5 @@ Pipfile
 Pipfile.lock
 __pycache__
 db.sqlite3
+.vscode
+.db

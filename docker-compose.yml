@@ -13,8 +13,10 @@ services:
       - "8000:8000"
     depends_on:
       - pgdb
+    # Load ENV variables in container
     env_file:
-      - .env
+      - env
+    # Makes directory sync from container to drive
     volumes:
       - .:/app
 
@@ -23,13 +25,14 @@ services:
     container_name: pgdb
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    # env_file:
+    #   - env
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     # ports:
     #   - "5432:5432"
-
     # pgadmin:
     #   image: dpage/pgadmin4
     #   container_name: pgdbadmin

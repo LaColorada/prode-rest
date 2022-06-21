@@ -6,12 +6,9 @@ Still in construction.
 
 ## Features
 
-Results prediction app
-
-Score rank
-
-Set up sport/league
-
+Sports forecast application
+Score rank between player
+Set up tournament and teams, create matchs and play with friends
 Custom users app
 
 ## What's missing
@@ -74,7 +71,7 @@ docker-compose run rest-api python manage.py loaddata .fixtures/assesments.json
 
 ### Run the application
 
-With the initial configurations done, now it's time to run the API service with the command `docker compose up rest-api` (if you want to run the service in background, you can add the -d flag during execution). When the service starts, you can access the `Browsable API` from the browser by entering the [api root endpoint](http://localhost:8000/) in the browser.
+With the initial configurations done, now it's time to run the API service with the command `docker compose up rest-api` (if you want to run the service in background, you can add the -d flag during execution). When the service starts, you can access the `Browsable API` from the browser by entering the [api root endpoint](http://localhost:8000/).
 
 If you are able to access the `Browsable API`, it means that the application is running correctly.
 
@@ -90,7 +87,7 @@ In this section you will find the information to understand and configure the pr
 
 Below you can see the main features of the project:
 
-* RESTful API fully explorable through the "Browsable API" and hyperlinks
+* REST API fully explorable through the Django REST "Browsable API" and hyperlinks
 * User registration, login, logout, password recovery, account activation
 * Application administration panel
 * Customized Browsable API for each endpoint
@@ -268,6 +265,7 @@ Application folder structure:
 │   ├── urls.py             # application level url configuration
 │   └── views.py            # views
 ```
+</details>
 
 ## Applications 📚
 
@@ -333,31 +331,92 @@ In order to carry out an `Assesment` it is necessary for a` Taker` to register w
 
 Each endpoint is listed below, with its description and available methods.
 
-* `assesments/` - Shows a list with all the available resources of the application (GET)
-* `assesments/assesments` - Show a list of all available assesments (GET)
-* `assesments/assesments/<id>` - Show the HOME of a specific test (GET)
-* `assesments/assesments/<id>/status` - Check the status of an assessment and return its status (GET)
-* `assesments/assesments/<id>/create` - Creates a new instance of an assesment and returns the UUID of the instance (POST)
-* `assesments/instances` - List all available instances (GET) (*)
-* `assesments/instances/<id>` - Show the details of the instance (GET)
-* `assesments/instances/<id>/test` - Check that the instance is active (GET)
-* `assesments/instances/<id>/start` - Starts the test and starts the countdown (POST)
-* `assesments/instances/<id>/questions/<id>` - Show the detail with the question of an instance (GET)
-* `assesments/instances/<id>/answer` - Send the result of an answer (PUT)
-* `assesments/instances/<id>/end` - End an instance (POST)
-* `assesments/instances/<id>/result` - Show the result of an instance (GET)
-* `assesments/instances/restore` - Allows you to retrieve an instance based on user data (POST)
-* `assesments/takers` - Show a list with all the test takers that performed assesments (GET) (*)
-* `assesments/takers/<id>` - Show the detail of a specific taker (GET) (*)
-* `assesments/takers/me` - Show the detail of a logged in taker (GET & PUT)
-* `assesments/questions` - List all available questions (GET) (*)
-* `assesments/questions/<id>` - Show the detail of a specific question (GET) (*)
-* `assesments/options` - List all available options (GET) (*)
-* `assesments/options/<id>` - Show the detail of a specific option (GET) (*)
+* `/` - Shows a list with all the available resources of the application (GET)
+* `prode/players/` - List all players objects (GET)
+* `prode/players/create/` - Creates a new player object (POST)
+* `prode/players/<int:pk>/` - Shows the detail of player object (GET)
+* `prode/matches/` - List all match objects (GET)
+* `prode/matches/create/` - Creates a new match object (POST)
+* `prode/matches/<int:pk>/` - Shows the detail of player object (GET)
+* `prode/forecasts/` - List all forecast objects (GET)
+* `prode/forecasts/create/` - Creates a new match object (POST)
+* `prode/forecasts/<int:pk>/` - Shows the detail of player object (GET)
+* `prode/teams/` - List all team objects (GET)
+* `prode/teams/create/` - Creates a new team object (POST)
+* `prode/teams/<int:pk>/` - Shows the detail of team object (GET)
+* `prode/tournaments/` - List all tournament object (GET)
+* `prode/tournaments/create/` - Creates a new tournament object (POST)
+* `prode/tournaments/<int:pk>/` - Shows the detail of tournament object (GET)
+
 
 Although the information of each endpoint is in the previous list, it is much better to navigate through the `Browsable API` that allows access to more information about each of the endpoints.
 
 > Endpoints with (*) can only be accessed using staff or super user acccount.
+
+</details>
+
+## User
+
+As user authorization trends to be a repetitive task, the best solution is to use pre built authorization modules that works great.
+This project uses the following Django modules for user authorization:
+
+* `dj_rest_auth`
+* `allauth`
+* `djangorestframework_simplejwt`
+
+### User authorization endpoints
+
+The response from the endpoint returns the id and URL of the created instance. With that id you can access the following endpoints:
+
+* `auth/login/`: returns token key. (POST)
+    username,
+    email,
+    password
+* `auth/logout/`: logout endpoint. (POST)
+* `auth/password/reset/`: use email to reset password. (POST)
+    email
+* `auth/password/reset/confirm`: confirm password reset.
+    userid,
+    token,
+    new_password1,
+    new_password2
+* `auth/password/change/`: change user password.
+    new_password1,
+    new_password2
+* `auth/user/`: returns pk, username, email, first_name, last_name.
+    username,
+    first_name,
+    last_name
+* `auth/token/verify/`: returns an empty JSON object.
+    token
+* `auth/token/refresh/`: Returns access token.
+    refresh
+
+### Registration endpoints
+
+* `auth/registration/`: registration endpoint. (POST)
+    username
+    password1
+    password2
+    email
+* `auth/registration/verify-email/`: verify email for registration. (POST)
+    key
+* `auth/registration/resend-email/`: resend verification email registration. (POST)
+    email
+
+
+### Social Media authentication
+
+* `auth/facebook/`: facebook authorization endpoint. (POST)
+    access_token,
+    code
+
+* `auth/twitter/`: twitter authorization endpoint. (POST)
+    access_token,
+    token_secret
+
+
+</details>
 
 ## Used technologies 🛠️
 

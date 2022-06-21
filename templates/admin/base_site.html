@@ -1,0 +1,15 @@
+<!-- Extends the base site. Reference of the file here:
+https://github.com/django/django/blob/main/django/contrib/admin/templates/admin/base.html -->
+{% extends "admin/base.html" %}
+<!-- Features needed for loading tags in this file -->
+{% load i18n static %}
+
+<!-- Title related settings -->
+{% block pretitle %}{% endblock %}
+{% block title %}Prode Admin Site{% endblock %}
+{% block content_subtitle %}{% endblock %}
+
+<!-- Link when user clicks on the left upper corned -->
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Prode Admin Site</a></h1>
+{% endblock %}

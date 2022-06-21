@@ -1,0 +1,108 @@
+[
+{
+  "model": "prode.match",
+  "pk": 1,
+  "fields": {
+    "name": "San Lorenzo vs La Candela",
+    "tournament": null,
+    "start": null,
+    "match_end": false,
+    "team1": 2,
+    "team2": 1,
+    "team1_score": 2,
+    "team2_score": 1
+  }
+},
+{
+  "model": "prode.match",
+  "pk": 2,
+  "fields": {
+    "name": "Bragado Club vs Independiente",
+    "tournament": null,
+    "start": null,
+    "match_end": true,
+    "team1": 3,
+    "team2": 4,
+    "team1_score": 0,
+    "team2_score": 2
+  }
+},
+{
+  "model": "prode.forecast",
+  "pk": 1,
+  "fields": {
+    "player": 1,
+    "match": 1,
+    "team1_score": 2,
+    "team2_score": 1
+  }
+},
+{
+  "model": "prode.forecast",
+  "pk": 2,
+  "fields": {
+    "player": 1,
+    "match": 2,
+    "team1_score": 0,
+    "team2_score": 0
+  }
+},
+{
+  "model": "prode.forecast",
+  "pk": 3,
+  "fields": {
+    "player": 3,
+    "match": 2,
+    "team1_score": 1,
+    "team2_score": 1
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 1,
+  "fields": {
+    "name": "La Candela",
+    "location": "Alberti"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 2,
+  "fields": {
+    "name": "San Lorenzo",
+    "location": "Alberti"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 3,
+  "fields": {
+    "name": "Bragado Club",
+    "location": "Bragado"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 4,
+  "fields": {
+    "name": "Independiente",
+    "location": "Chivilcoy"
+  }
+},
+{
+  "model": "prode.player",
+  "pk": 1,
+  "fields": {
+    "user": 5,
+    "score": 0
+  }
+},
+{
+  "model": "prode.player",
+  "pk": 3,
+  "fields": {
+    "user": 4,
+    "score": 0
+  }
+}
+]

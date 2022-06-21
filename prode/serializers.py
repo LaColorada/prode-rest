@@ -1,14 +1,26 @@
 from rest_framework import serializers
 
-from django.contrib.auth import get_user_model
+from prode.models import Match, Forecast, Team, Tournament
 
-from prode.models import Match, Forecast, Team, Player
+from user.serializers import PlayerSerializer
+
+
+class TournamentSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Tournament model
+    """
+
+    class Meta:
+        model = Tournament
+        fields = "__all__"
 
 
 class TeamSerializer(serializers.ModelSerializer):
     """
     Serializer for Team model
     """
+
+    tournament = TournamentSerializer(many=True, read_only=True)
 
     class Meta:
         model = Team
@@ -33,16 +45,8 @@ class ForecastSerializer(serializers.ModelSerializer):
     Serializer for Forecast model
     """
 
+    player = PlayerSerializer()
+
     class Meta:
         model = Forecast
-        fields = "__all__"
-
-
-class PlayerSerializer(serializers.ModelSerializer):
-    """
-    Serializer for Forecast model
-    """
-
-    class Meta:
-        model = Player
         fields = "__all__"
