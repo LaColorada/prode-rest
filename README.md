@@ -4,6 +4,12 @@ An API project using [Django REST Framework](https://www.django-rest-framework.o
 
 Still in construction.
 
+## Why Django?
+
+Django is a Python web development framework. It is between the most used/recognized frameworks along side Flask and FastAPI.
+Constant developer errors feedback, simplicity, pre solved problems, integrated admin site, user system, automated testing, extensive documentation, 
+REST Framework also allow Django to become a backend server capable of connecting with any frontend framework and language as it is the trend in the industry nowadays. JavaScript dominates the frontend more popular frameworks like Vue, Angular, React.
+
 ## Features
 
 Sports forecast application
@@ -25,18 +31,6 @@ A: Yes.
 
 How to section with the steps to set up the project in your system.
 
-### OPTIONAL SETUP
-
-project-setup script for bash or zsh(sudo permissions for rest project build)
-
-`chmod +x project-setup.sh`
-`bash project-setup.sh`
-
-Running the project afterwards is simple as:
-`docker compose up rest-api`
-
-Stop the server and db instance with `docker compose down`
-
 <details><summary><b>Setting the project up</b></summary>
 
 ### Install dependencies
@@ -56,6 +50,13 @@ git clone https://github.com/USER/prode_rest.git
 ```
 
 > In case you don't have a Github account, or you don't want to fork, you can directly clone this repo with the command `git clone https://github.com/LaColorada/prode_rest.git`.
+
+### Linter and formatter
+
+This project uses Pylint and Black.
+Black is(quote of project readme):
+
+Black is the uncompromising Python code formatter. By using it, you agree to cede control over minutiae of hand-formatting. In return, Black gives you speed, determinism, and freedom from pycodestyle nagging about formatting. You will save time and mental energy for more important matters. 
 
 ### Initial project configuration
 
@@ -333,19 +334,14 @@ Each endpoint is listed below, with its description and available methods.
 
 * `/` - Shows a list with all the available resources of the application (GET)
 * `prode/players/` - List all players objects (GET)
-* `prode/players/create/` - Creates a new player object (POST)
 * `prode/players/<int:pk>/` - Shows the detail of player object (GET)
 * `prode/matches/` - List all match objects (GET)
-* `prode/matches/create/` - Creates a new match object (POST)
 * `prode/matches/<int:pk>/` - Shows the detail of player object (GET)
 * `prode/forecasts/` - List all forecast objects (GET)
-* `prode/forecasts/create/` - Creates a new match object (POST)
 * `prode/forecasts/<int:pk>/` - Shows the detail of player object (GET)
 * `prode/teams/` - List all team objects (GET)
-* `prode/teams/create/` - Creates a new team object (POST)
 * `prode/teams/<int:pk>/` - Shows the detail of team object (GET)
 * `prode/tournaments/` - List all tournament object (GET)
-* `prode/tournaments/create/` - Creates a new tournament object (POST)
 * `prode/tournaments/<int:pk>/` - Shows the detail of tournament object (GET)
 
 
@@ -404,19 +400,13 @@ The response from the endpoint returns the id and URL of the created instance. W
 * `auth/registration/resend-email/`: resend verification email registration. (POST)
     email
 
-
-### Social Media authentication
-
-* `auth/facebook/`: facebook authorization endpoint. (POST)
-    access_token,
-    code
-
-* `auth/twitter/`: twitter authorization endpoint. (POST)
-    access_token,
-    token_secret
-
-
 </details>
+
+## Linter and formatter
+
+Pylint and Black
+
+How to setup guide
 
 ## Used technologies 🛠️
 

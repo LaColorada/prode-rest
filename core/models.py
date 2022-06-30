@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 
 class BaseModel(models.Model):
@@ -6,8 +7,12 @@ class BaseModel(models.Model):
     Abstract base class for models
     """
 
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="created_at")
-    updated_at = models.DateTimeField(auto_now=True, verbose_name="updated_at")
+    created_at = models.DateTimeField(
+        auto_now_add=True, null=True, verbose_name="created_at"
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True, null=True, verbose_name="updated_at"
+    )
 
     class Meta:
         abstract = True

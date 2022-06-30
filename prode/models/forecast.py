@@ -1,10 +1,10 @@
-from django.db import models
+from core.models import BaseModel
 from django.core.exceptions import ValidationError
-
+from django.db import models
 from prode.models import Match
 
 
-class Forecast(models.Model):
+class Forecast(BaseModel):
     """Forecast model
 
     Returns:
@@ -21,18 +21,6 @@ class Forecast(models.Model):
 
     def __str__(self):
         return f"({self.id}) {self.match.name} | {self.player}"
-
-    def editable(self):
-        return not self.match.started()
-
-    editable.boolean = True
-
-    def clean(self):
-        try:
-            if not self.editable():
-                raise ValidationError("The match has already started.")
-        except Match.DoesNotExist:
-            pass
 
     def score(self):
         score = 0
@@ -70,6 +58,4 @@ class Forecast(models.Model):
             score = score + 1
 
         self.player.score = score
-        self.player.save()
-
-        return score
+        return self.player.save()

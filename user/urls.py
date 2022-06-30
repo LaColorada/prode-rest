@@ -7,11 +7,6 @@ from user import views
 
 
 urlpatterns = [
-    # TODO: check if this is necessary
-    path("create/", views.CreateUserView.as_view(), name="create"),
-    path("token/", views.CreateTokenView.as_view(), name="token"),
-    path("me/", views.ManageUserView.as_view(), name="me"),
-    #
     path("auth/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("auth/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path(

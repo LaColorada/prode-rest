@@ -1,10 +1,4 @@
-from django.contrib import admin
+from core.admin import BaseAdmin
 
-from prode.models import Match, Forecast, Team, Tournament
-
-# Register your models here.
-
-admin.site.register(Match)
-admin.site.register(Forecast)
-admin.site.register(Team)
-admin.site.register(Tournament)
+# Auto register each model in this app to django admin.
+BaseAdmin.register_admin_classes("prode", globals())

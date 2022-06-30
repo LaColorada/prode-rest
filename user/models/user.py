@@ -1,14 +1,11 @@
-from django.db import models
-
 # from django.contrib.auth import get_user_model
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
     PermissionsMixin,
-    BaseUserManager,
 )
+from django.db import models
 from django.utils import timezone
-
 
 # User = get_user_model()
 
@@ -72,7 +69,10 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     """
-    Custom model for email login instead of user login
+    An abstract base class implementing a fully featured User model
+
+
+    Email as login field, email and password are required, other are optional.
     """
 
     username = models.CharField(max_length=255)

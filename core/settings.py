@@ -1,7 +1,5 @@
-from pathlib import Path
-
 import os
-
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,12 +80,6 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -162,10 +154,10 @@ REST_AUTH_SERIALIZERS = {
     "PASSWORD_RESET_CONFIRM_SERIALIZER": "user.serializers.PasswordResetConfirmSerializer",
 }
 
+# JSON Web Tokens (JWT) configuration for simplejwt extension.
 REST_USE_JWT = True
-JWT_AUTH_COOKIE = "my-app-auth"
-JWT_AUTH_REFRESH_COOKIE = "my-refresh-token"
-
+JWT_AUTH_COOKIE = "prode-auth"
+JWT_AUTH_REFRESH_COOKIE = "prode-refresh-token"
 SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": True,
 }
@@ -191,6 +183,8 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+
+ACCOUNT_EMAIL_VERIFICATION = "optional"
 ACCOUNT_UNIQUE_EMAIL = True

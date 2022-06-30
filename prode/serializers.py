@@ -1,8 +1,6 @@
 from rest_framework import serializers
 
-from prode.models import Match, Forecast, Team, Tournament
-
-from user.serializers import PlayerSerializer
+from prode.models import Forecast, Match, Team, Tournament
 
 
 class TournamentSerializer(serializers.ModelSerializer):
@@ -45,7 +43,7 @@ class ForecastSerializer(serializers.ModelSerializer):
     Serializer for Forecast model
     """
 
-    player = PlayerSerializer()
+    # player = PlayerSerializer(read_only=True)
 
     class Meta:
         model = Forecast

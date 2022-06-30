@@ -1,11 +1,9 @@
-from django.db import transaction
-from rest_framework import serializers
-
-from django.contrib.auth import get_user_model, authenticate
-from django.utils.translation import gettext_lazy as _
-
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from dj_rest_auth.serializers import LoginSerializer, PasswordResetConfirmSerializer
+from django.contrib.auth import authenticate, get_user_model
+from django.db import transaction
+from django.utils.translation import gettext_lazy as _
+from rest_framework import serializers
 
 from user.models import Player
 
@@ -59,37 +57,6 @@ class PlayerSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class AuthTokenSerializer(serializers.Serializer):
-    """
-    Serializer for the user authentication object
-    """
-
-    email = serializers.CharField()
-    password = serializers.CharField(
-        trim_whitespace=False,
-        style={"input_type": "password"},
-    )
-
-    def validate(self, attrs):
-        """
-        Validate and authenticate user
-        """
-
-        email = attrs.get("email")
-        password = attrs.get("password")
-
-        user = authenticate(
-            request=self.context.get("request"), username=email, password=password
-        )
-        if not user:
-            msg = _("Unable to authenticate with provided credentials")
-            raise serializers.ValidationError(msg, code="authorization")
-
-        attrs["user"] = user
-        return attrs
-
-
-################ CUSTOM REST AUTH SERIALIZERS #############################
 class RegistrationSerializer(RegisterSerializer):
     username = None
     password1 = serializers.CharField(style={"input_type": "password"})
@@ -110,7 +77,7 @@ class LoginSerializer(LoginSerializer):
 class DetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ["email"]
+        fields = ["email", "first_name", "last_name"]
 
 
 class PasswordResetConfirmSerializer(PasswordResetConfirmSerializer):
