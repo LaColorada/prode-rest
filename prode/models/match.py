@@ -1,8 +1,7 @@
-import datetime
-
 from core.models import BaseModel
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils import timezone
 
 
 class Match(BaseModel):
@@ -30,6 +29,6 @@ class Match(BaseModel):
 
     @property
     def finalized(self):
-        return datetime.datetime.now() >= (
-            self.start_date + datetime.timedelta(minutes=self.duration_mins)
+        return timezone.now() >= (
+            self.start_date + timezone.timedelta(minutes=self.duration_mins)
         )
