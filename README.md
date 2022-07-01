@@ -281,8 +281,8 @@ The prode API manages matches, teams, tournaments and player forecast/score.
 #### Prode Features
 
 * Personalized teams and tournaments
-* Player forecast and score rank
 * Match list and details
+* Player forecast and score rank
 * Admin area to create and modify the data with ease
 * User endpoint
 * Personalized user class with email as username
@@ -294,7 +294,7 @@ The prode API manages matches, teams, tournaments and player forecast/score.
 
 The application comes with sample data ready to load at `.example_data/test_data.json`. To load this data you have to execute the command `docker-compose run django-rest-api python manage.py migrate` and then, execute the command `docker-compose run django-rest-api python manage.py loaddata .example_data/test_data.json` as explained in [Quick Start](#quick-start) section.
 
-#### Using the Assesments admin site
+#### Using the Prode admin site
 
 At first, it is necessary to create a superuser as described in the [Using the admin site](#using-the-admin-site) and then, login at the [admin endpoint](http://localhost:8000/admin). 
 
@@ -302,9 +302,9 @@ Inside the admin panel you can create different assesments, assign questions and
 
 #### ERD (Entity-Relation Desing)
 
-In the next figure you can see the `Assesments App` entities design and their relationships using the online tool [EDR Plus](https://erdplus.com/standalone).
+In the next figure you can see the `Prode App` entities design and their relationships using the online tool [EDR Plus](https://erdplus.com/standalone).
 
-![architecture](doc/assesments/edr-figure.png)
+![architecture](docs/prode/edr-figure.png)
 
 An `Assesment` is defined only once, and in addition to its attributes, it has one or more` Questions` associated with it. In turn, each `Questions` has one or more` Options` associated with it.
 
