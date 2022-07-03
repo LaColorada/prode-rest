@@ -1,31 +1,41 @@
 # Prode REST API
 
-An API project using [Django REST Framework](https://www.django-rest-framework.org/) about a prode/sports lottery that lets users compete in a friendly app with sports results and keep track of the scores, main player, pichichi and many more.
+Welcome to Prode REST API! An API project that runs in Docker ecosystem using [Django REST Framework](https://www.django-rest-framework.org/) about a prode/sports lottery that lets users compete in a friendly app with sports results and keep track of the scores and many more features.
 
-Still in construction.
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 
 ## Why Django?
 
-Django is a Python web development framework. It is between the most used/recognized frameworks along side Flask and FastAPI.
-Constant developer errors feedback, simplicity, pre solved problems, integrated admin site, user system, automated testing, extensive documentation, 
-REST Framework also allow Django to become a backend server capable of connecting with any frontend framework and language as it is the trend in the industry nowadays. JavaScript dominates the frontend more popular frameworks like Vue, Angular, React.
+Django is a Python web development framework. It is between the most used/recognized Python frameworks along side Flask and FastAPI.
+Some of the pro's of using Django are constant developer errors feedback, simplicity, pre solved problems, integrated admin site, user system, automated testing, extensive documentation, 
+REST Framework also allow Django to become a backend server capable of connecting with any frontend framework and language as it is the trend in the industry nowadays. JavaScript dominates the frontend more popular frameworks like Vue, Angular and React.
 
 ## Features
 
-Sports forecast application
-Score rank between player
-Set up tournament and teams, create matchs and play with friends
-Custom users app
+Some of the features that the project contains:
+
+- Sports forecast application
+- Score rank between player
+- Set up tournament and teams, create matchs and play with friends
+- Custom users app
 
 ## What's missing
 
-...
+- Retrieve Tournament, Team and Match data from external source.
+- Forecast for tournament winners and positions.
+- Tournament statistics
+- Player model to predict top scorer/assister per match/tournament.
 
 ## FAQs
+
+<details><summary><b>Frequently asked questions</b></summary>
 
 Q: Can i use the project for personal/commercial use?
 
 A: Yes.
+
+</details>
 
 ## Quick start
 
@@ -51,12 +61,6 @@ git clone https://github.com/USER/prode_rest.git
 
 > In case you don't have a Github account, or you don't want to fork, you can directly clone this repo with the command `git clone https://github.com/LaColorada/prode_rest.git`.
 
-### Linter and formatter
-
-This project uses Pylint and Black.
-Black is(quote of project readme):
-
-Black is the uncompromising Python code formatter. By using it, you agree to cede control over minutiae of hand-formatting. In return, Black gives you speed, determinism, and freedom from pycodestyle nagging about formatting. You will save time and mental energy for more important matters. 
 
 ### Initial project configuration
 
@@ -95,6 +99,24 @@ Below you can see the main features of the project:
 * Extensive usage documentation
 
 The feature related to each application is included in the [Applications](#applications) section.
+
+### Linter and formatter
+
+This project uses Pylint linter and Black formatter.
+
+#### Pylint
+
+    Pylint is a static code analyser for Python 2 or 3. The latest version supports Python 3.7.2 and above.
+
+[Pylint](https://pylint.pycqa.org/en/latest/)
+
+#### Black
+
+Black is(quote of project readme):
+
+    Black is the uncompromising Python code formatter. By using it, you agree to cede control over minutiae of hand-formatting. In return, Black gives you speed, determinism, and freedom from pycodestyle nagging about formatting. You will save time and mental energy for more important matters. 
+
+[Black](https://black.readthedocs.io/en/stable/)
 
 ### Django Configuration
 
@@ -319,7 +341,7 @@ Each endpoint is listed below, with its description and available methods.
 * `prode/players/<int:pk>/` - Shows the detail of player object (GET)
 * `prode/matches/` - List all match objects (GET)
 * `prode/matches/<int:pk>/` - Shows the detail of player object (GET)
-* `prode/forecasts/` - List all forecast objects (GET)
+* `prode/forecasts/` - List all forecast objects and create forecast (GET/POST)
 * `prode/forecasts/<int:pk>/` - Shows the detail of player object (GET)
 * `prode/teams/` - List all team objects (GET)
 * `prode/teams/<int:pk>/` - Shows the detail of team object (GET)
@@ -381,6 +403,55 @@ The response from the endpoint returns the id and URL of the created instance. W
     key
 * `auth/registration/resend-email/`: resend verification email registration. (POST)
     email
+
+</details>
+
+## Automated testing
+
+In this section you will find the information of the automated testing of this project.
+
+<details><summary><b>Testing info</b></summary>
+
+Automated testing of the endpoints and the code is included in the project to keep the changes and modifications error free. Very useful for working in teams as you can easily detect is something is not working.
+
+Some of the benefits of using automated testing are:
+
+- Higher application quality (less bugs)
+- Easier refactoring (refactor: change the code with the same behavior)
+- Easier version upgrades
+
+The tests can be run using the following command: 
+
+With the application server running in the container enter `docker compose exec drf-api python3 manage.py test`
+
+If everything worked fine you should get the message `OK`.
+
+They are stored in the folder `./tests/`.
+
+* `/test_user_api.py` covers the user model and endpoint.
+* `/test_tournament_api.py` covers the tournament model and endpoint.
+* `/test_team_api.py` covers the team model and endpoint.
+* `/test_match_api.py` covers the match model and endpoint.
+* `/test_forecast_api.py` covers the forecast model and endpoint.
+* `/test_player_api.py` covers the player model and endpoint.
+* `/test_models.py` covers the models integrity and creation.
+
+#### Coverage 
+
+The coverage tool is used to find out how much code is tested by automated tests.
+
+Briefing:
+
+    Coverage.py is a tool for measuring code coverage of Python programs. It monitors your program, noting which parts of the code have been executed, then analyzes the source to identify code that could have been executed but was not.
+
+    Coverage measurement is typically used to gauge the effectiveness of tests. It can show which parts of your code are being exercised by tests, and which are not.
+
+
+Read more info about the project here [Coverage](https://pypi.org/project/coverage/).
+
+The project comes with the coverage report already created. You can access it by opening the `./htmlcov/index.html` file in your web browser.
+
+![architecture](docs/prode/coverage_report.png)
 
 </details>
 

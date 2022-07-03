@@ -6,7 +6,7 @@ from django.utils import timezone
 
 class Match(BaseModel):
 
-    name = models.CharField(max_length=255, required=False)
+    name = models.CharField(max_length=255, blank=True, null=True)
     tournament = models.ForeignKey(
         "prode.Tournament", on_delete=models.CASCADE, blank=True, null=True
     )
@@ -23,9 +23,9 @@ class Match(BaseModel):
     team2_score = models.PositiveIntegerField(default=0)
 
     def save(self, *args, **kwargs):
-        self.name = f"{self.team1.name} vs {self.team2.name}"
         if self.team1 == self.team2:
             raise Exception("Team1 cannot be the same as Team2")
+        self.name = f"{self.team1.name} vs {self.team2.name}"
         super(Match, self).save(*args, **kwargs)
 
     @property
