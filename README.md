@@ -3,6 +3,8 @@
 Welcome to Prode REST API! An API project that runs in Docker ecosystem using [Django REST Framework](https://www.django-rest-framework.org/) about a prode/sports lottery that lets users compete in a friendly app with sports results and keep track of the scores and many more features.
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
+[![linting: pylint](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)](https://github.com/PyCQA/pylint)
 
 
 ## Why Django?
@@ -357,6 +359,10 @@ Although the information of each endpoint is in the previous list, it is much be
 
 ## User
 
+The user app manages authorization, registration, password, login and email verification.
+
+<details><summary><b>See all info related to User API</b></summary>
+
 As user authorization trends to be a repetitive task, the best solution is to use pre built authorization modules that works great.
 This project uses the following Django modules for user authorization:
 
@@ -403,6 +409,8 @@ The response from the endpoint returns the id and URL of the created instance. W
     key
 * `auth/registration/resend-email/`: resend verification email registration. (POST)
     email
+
+</details>
 
 </details>
 
