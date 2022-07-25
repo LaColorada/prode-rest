@@ -2,16 +2,19 @@
 
 Welcome to Prode REST API! An API project that runs in Docker ecosystem using [Django REST Framework](https://www.django-rest-framework.org/) about a prode/sports lottery that lets users compete in a friendly app with sports results and keep track of the scores and many more features.
 
+[![docker](https://img.shields.io/badge/docker-blue)](https://github.com/PyCQA/python)
+[![language: python](https://img.shields.io/badge/lenguage-python-blue)](https://github.com/PyCQA/python)
+[![framework: django](https://img.shields.io/badge/framework-django-darkgreen)](https://github.com/topics/python)
+[![package: rest framework](https://img.shields.io/badge/djangorestframework-darkred)](https://github.com/encode/django-rest-framework)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
-[![linting: pylint](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)](https://github.com/PyCQA/pylint)
-
 
 ## Why Django?
 
-Django is a Python web development framework. It is between the most used/recognized Python frameworks along side Flask and FastAPI.
+Django is a Python web development framework. It is between the most used/recognized Python frameworks alongside Flask and FastAPI.
 Some of the pro's of using Django are constant developer errors feedback, simplicity, pre solved problems, integrated admin site, user system, automated testing, extensive documentation, 
-REST Framework also allow Django to become a backend server capable of connecting with any frontend framework and language as it is the trend in the industry nowadays. JavaScript dominates the frontend more popular frameworks like Vue, Angular and React.
+REST Framework also allow Django to become a backend server capable of connecting with any frontend framework and language as it is the trend in the industry nowadays. JavaScript dominates the frontend, his more popular frameworks are Vue, Angular and React.
+Some of the most popular django apps are Instagram, Spotify, YouTube, Dropbox, Pinterest and many more.
 
 ## Features
 
@@ -70,10 +73,10 @@ To run the application, you first need to download the database image with the `
 
 When the above processes finish, start the database service with the command `docker compose up -d pgdb` from the root of the project. With the database running, it is necessary to create the tables that the application needs to work with the command `docker compose run rest-api python3 manage.py migrate`.
 
-It is possible to load sample data to test the API as quickly as possible. The sample data is in the `.example_data` directory. The command needed for load fixture is as follows (in the example, the `example_data.json` fixtures will be loaded):
+It is possible to load sample data to test the API as quickly as possible. The sample data is in the `.fixtures` directory. The command needed for load fixture is as follows (in the example, the `example_data.json` fixtures will be loaded):
 
 ```
-docker-compose run drf-api python3 manage.py loaddata .fixtures/example_data.json
+docker compose run drf-api python3 manage.py loaddata .fixtures/example_data.json
 ```
 
 ### Run the application
@@ -176,7 +179,7 @@ The specific app endpoints are described in each section of [Applications](#appl
 
 The API service has an integrated administration panel that allows you to perform CRUD operations on each of registered applications models (tables). In this image you can see how the administration panel looks.
 
-![screenshot-admin-panel](doc/screenshot-admin-panel.png)
+![screenshot-admin-panel](docs/prode/admin_site_screenshot.png)
 
 To use the admin site you must create a superuser before. Execute the command `docker compose run rest-api python3 manage.py createsuperuser`, enter your email and your password twice and then go to [admin endpoint](http://localhost:8000/admin) to login with your credentials.
 
@@ -198,7 +201,7 @@ DATABASE_HOST=db
 DATABASE_PORT=5432
 ```
 
-It is **HIGHLY RECOMMENDED**that you change these variables if you want to use this application for productive purposes.
+It is **HIGHLY RECOMMENDED** that you change these variables if you want to use this application for productive purposes.
 
 ### Database manipulation
 
@@ -207,14 +210,14 @@ Django provides an excellent database manipulation without the need to use any e
 If you want to make a simple backup of the database, execute the following command:
 
 ```
-docker-compose run drf-api \
+docker compose run drf-api \
 python3 manage.py dumpdata --indent 2 > .fixtures/db.json
 ```
 
 If you want to make a backup of the database that can be used in a fresh database, execute the following command:
 
 ```
-docker-compose run drf-api \
+docker compose run drf-api \
 python3 manage.py dumpdata --indent 2 \
 --exclude auth.permission --exclude contenttypes --exclude admin.logentry > .fixtures/db.json
 ```
@@ -222,13 +225,13 @@ python3 manage.py dumpdata --indent 2 \
 To load the application data into a fresh database, run the following command to create the necessary tables:
 
 ```
-docker-compose run django-rest-api python manage.py migrate
+docker compose run django-rest-api python manage.py migrate
 ```
 
 And then load data inside the tables:
 
 ```
-docker-compose run django-rest-api python manage.py loaddata .fixtures/db.json
+docker compose run django-rest-api python manage.py loaddata .fixtures/db.json
 ```
 
 
@@ -316,7 +319,7 @@ The prode API manages matches, teams, tournaments and player forecast/score.
 
 #### Prode sample data
 
-The application comes with sample data ready to load at `.example_data/test_data.json`. To load this data you have to execute the command `docker-compose run django-rest-api python manage.py migrate` and then, execute the command `docker-compose run django-rest-api python manage.py loaddata .example_data/test_data.json` as explained in [Quick Start](#quick-start) section.
+The application comes with sample data ready to load at `.fixtures/example_data.json`. To load this data you have to execute the command `docker compose run django-rest-api python manage.py migrate` and then, execute the command `docker compose run django-rest-api python manage.py loaddata .fixtures/example_data.json` as explained in [Quick Start](#quick-start) section.
 
 #### Using the Prode admin site
 
@@ -352,8 +355,6 @@ Each endpoint is listed below, with its description and available methods.
 
 
 Although the information of each endpoint is in the previous list, it is much better to navigate through the `Browsable API` that allows access to more information about each of the endpoints.
-
-> Endpoints with (*) can only be accessed using staff or super user acccount.
 
 </details>
 
