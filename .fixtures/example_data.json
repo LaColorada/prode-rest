@@ -1,59 +1,19 @@
+/app
 [
 {
   "model": "prode.match",
   "pk": 1,
   "fields": {
-    "name": "San Lorenzo vs La Candela",
-    "tournament": null,
-    "start": null,
+    "created_at": "2022-07-25T15:46:20.896Z",
+    "updated_at": "2022-07-25T15:46:20.896Z",
+    "name": "Real Madrid vs Liverpool",
+    "tournament": 1,
+    "start_date": "2022-07-25T15:46:09Z",
+    "duration_mins": 90,
     "match_end": false,
-    "team1": 2,
-    "team2": 1,
-    "team1_score": 2,
-    "team2_score": 1
-  }
-},
-{
-  "model": "prode.match",
-  "pk": 2,
-  "fields": {
-    "name": "Bragado Club vs Independiente",
-    "tournament": null,
-    "start": null,
-    "match_end": true,
     "team1": 3,
-    "team2": 4,
-    "team1_score": 0,
-    "team2_score": 2
-  }
-},
-{
-  "model": "prode.forecast",
-  "pk": 1,
-  "fields": {
-    "player": 1,
-    "match": 1,
-    "team1_score": 2,
-    "team2_score": 1
-  }
-},
-{
-  "model": "prode.forecast",
-  "pk": 2,
-  "fields": {
-    "player": 1,
-    "match": 2,
-    "team1_score": 0,
-    "team2_score": 0
-  }
-},
-{
-  "model": "prode.forecast",
-  "pk": 3,
-  "fields": {
-    "player": 3,
-    "match": 2,
-    "team1_score": 1,
+    "team2": 8,
+    "team1_score": 3,
     "team2_score": 1
   }
 },
@@ -61,48 +21,650 @@
   "model": "prode.team",
   "pk": 1,
   "fields": {
-    "name": "La Candela",
-    "location": "Alberti"
+    "created_at": "2022-07-25T15:32:12.914Z",
+    "updated_at": "2022-07-25T15:32:24.279Z",
+    "name": "Barcelona",
+    "location": "Spain"
   }
 },
 {
   "model": "prode.team",
   "pk": 2,
   "fields": {
-    "name": "San Lorenzo",
-    "location": "Alberti"
+    "created_at": "2022-07-25T15:32:30.652Z",
+    "updated_at": "2022-07-25T15:32:57.019Z",
+    "name": "Sevilla",
+    "location": "Spain"
   }
 },
 {
   "model": "prode.team",
   "pk": 3,
   "fields": {
-    "name": "Bragado Club",
-    "location": "Bragado"
+    "created_at": "2022-07-25T15:33:09.051Z",
+    "updated_at": "2022-07-25T15:33:09.051Z",
+    "name": "Real Madrid",
+    "location": "Spain"
   }
 },
 {
   "model": "prode.team",
   "pk": 4,
   "fields": {
-    "name": "Independiente",
-    "location": "Chivilcoy"
+    "created_at": "2022-07-25T15:33:17.668Z",
+    "updated_at": "2022-07-25T15:33:17.668Z",
+    "name": "Atletico de Madrid",
+    "location": "Spain"
   }
 },
 {
-  "model": "prode.player",
+  "model": "prode.team",
+  "pk": 5,
+  "fields": {
+    "created_at": "2022-07-25T15:33:26.238Z",
+    "updated_at": "2022-07-25T15:33:26.238Z",
+    "name": "Valencia",
+    "location": "Spain"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 6,
+  "fields": {
+    "created_at": "2022-07-25T15:33:47.784Z",
+    "updated_at": "2022-07-25T15:33:47.784Z",
+    "name": "Manchester City",
+    "location": "England"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 7,
+  "fields": {
+    "created_at": "2022-07-25T15:33:54.689Z",
+    "updated_at": "2022-07-25T15:33:54.689Z",
+    "name": "Manchester United",
+    "location": "England"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 8,
+  "fields": {
+    "created_at": "2022-07-25T15:34:05.931Z",
+    "updated_at": "2022-07-25T15:34:05.931Z",
+    "name": "Liverpool",
+    "location": "England"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 9,
+  "fields": {
+    "created_at": "2022-07-25T15:34:11.893Z",
+    "updated_at": "2022-07-25T15:34:11.893Z",
+    "name": "Arsenal",
+    "location": "England"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 10,
+  "fields": {
+    "created_at": "2022-07-25T15:34:20.842Z",
+    "updated_at": "2022-07-25T15:34:20.842Z",
+    "name": "Chelsea",
+    "location": "England"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 11,
+  "fields": {
+    "created_at": "2022-07-25T15:34:26.603Z",
+    "updated_at": "2022-07-25T15:34:26.603Z",
+    "name": "Tottenham",
+    "location": "England"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 12,
+  "fields": {
+    "created_at": "2022-07-25T15:35:05.233Z",
+    "updated_at": "2022-07-25T15:35:05.233Z",
+    "name": "Paris Saint Germain",
+    "location": "France"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 13,
+  "fields": {
+    "created_at": "2022-07-25T15:35:10.621Z",
+    "updated_at": "2022-07-25T15:35:10.621Z",
+    "name": "Monaco",
+    "location": "France"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 14,
+  "fields": {
+    "created_at": "2022-07-25T15:35:26.073Z",
+    "updated_at": "2022-07-25T15:35:26.073Z",
+    "name": "Inter de Milan",
+    "location": "Italy"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 15,
+  "fields": {
+    "created_at": "2022-07-25T15:35:32.433Z",
+    "updated_at": "2022-07-25T15:35:32.433Z",
+    "name": "Milan",
+    "location": "Italy"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 16,
+  "fields": {
+    "created_at": "2022-07-25T15:37:06.981Z",
+    "updated_at": "2022-07-25T15:37:06.981Z",
+    "name": "Napoli",
+    "location": "Italy"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 17,
+  "fields": {
+    "created_at": "2022-07-25T15:37:15.003Z",
+    "updated_at": "2022-07-25T15:37:15.003Z",
+    "name": "Roma",
+    "location": "Italy"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 18,
+  "fields": {
+    "created_at": "2022-07-25T15:37:19.653Z",
+    "updated_at": "2022-07-25T15:37:19.653Z",
+    "name": "Juventus",
+    "location": "Italy"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 19,
+  "fields": {
+    "created_at": "2022-07-25T15:37:36.541Z",
+    "updated_at": "2022-07-25T15:37:36.541Z",
+    "name": "Borussia Dortmund",
+    "location": "Germany"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 20,
+  "fields": {
+    "created_at": "2022-07-25T15:37:44.566Z",
+    "updated_at": "2022-07-25T15:37:44.566Z",
+    "name": "Bayern Munich",
+    "location": "Germany"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 21,
+  "fields": {
+    "created_at": "2022-07-25T15:38:02.227Z",
+    "updated_at": "2022-07-25T15:38:02.227Z",
+    "name": "Werder Bremen",
+    "location": "Germany"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 22,
+  "fields": {
+    "created_at": "2022-07-25T15:38:24.647Z",
+    "updated_at": "2022-07-25T15:38:24.647Z",
+    "name": "Wolfburg",
+    "location": "Germany"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 23,
+  "fields": {
+    "created_at": "2022-07-25T15:39:01.404Z",
+    "updated_at": "2022-07-25T15:39:01.404Z",
+    "name": "Borussia Mönchengladbach",
+    "location": "Germany"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 24,
+  "fields": {
+    "created_at": "2022-07-25T15:39:27.987Z",
+    "updated_at": "2022-07-25T15:39:27.987Z",
+    "name": "Argentina",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 25,
+  "fields": {
+    "created_at": "2022-07-25T15:39:34.906Z",
+    "updated_at": "2022-07-25T15:39:34.906Z",
+    "name": "Brazil",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 26,
+  "fields": {
+    "created_at": "2022-07-25T15:39:39.892Z",
+    "updated_at": "2022-07-25T15:39:39.892Z",
+    "name": "Uruguay",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 27,
+  "fields": {
+    "created_at": "2022-07-25T15:39:44.580Z",
+    "updated_at": "2022-07-25T15:39:44.580Z",
+    "name": "Chile",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 28,
+  "fields": {
+    "created_at": "2022-07-25T15:39:49.900Z",
+    "updated_at": "2022-07-25T15:39:49.900Z",
+    "name": "Bolivia",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 29,
+  "fields": {
+    "created_at": "2022-07-25T15:39:55.749Z",
+    "updated_at": "2022-07-25T15:39:55.749Z",
+    "name": "Paraguay",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 30,
+  "fields": {
+    "created_at": "2022-07-25T15:40:01.575Z",
+    "updated_at": "2022-07-25T15:40:01.575Z",
+    "name": "Peru",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 31,
+  "fields": {
+    "created_at": "2022-07-25T15:40:07.481Z",
+    "updated_at": "2022-07-25T15:40:07.481Z",
+    "name": "Ecuador",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 32,
+  "fields": {
+    "created_at": "2022-07-25T15:40:12.242Z",
+    "updated_at": "2022-07-25T15:40:12.242Z",
+    "name": "Venezuela",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 33,
+  "fields": {
+    "created_at": "2022-07-25T15:40:17.375Z",
+    "updated_at": "2022-07-25T15:40:17.375Z",
+    "name": "Colombia",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 34,
+  "fields": {
+    "created_at": "2022-07-25T15:40:23.604Z",
+    "updated_at": "2022-07-25T15:40:23.604Z",
+    "name": "Mexico",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 35,
+  "fields": {
+    "created_at": "2022-07-25T15:40:30.155Z",
+    "updated_at": "2022-07-25T15:40:30.155Z",
+    "name": "USA",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 36,
+  "fields": {
+    "created_at": "2022-07-25T15:40:34.853Z",
+    "updated_at": "2022-07-25T15:40:34.853Z",
+    "name": "Canada",
+    "location": "America"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 37,
+  "fields": {
+    "created_at": "2022-07-25T15:40:40.584Z",
+    "updated_at": "2022-07-25T15:40:40.584Z",
+    "name": "Spain",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 38,
+  "fields": {
+    "created_at": "2022-07-25T15:40:44.412Z",
+    "updated_at": "2022-07-25T15:40:44.412Z",
+    "name": "France",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 39,
+  "fields": {
+    "created_at": "2022-07-25T15:40:48.147Z",
+    "updated_at": "2022-07-25T15:40:48.147Z",
+    "name": "England",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 40,
+  "fields": {
+    "created_at": "2022-07-25T15:40:54.209Z",
+    "updated_at": "2022-07-25T15:40:54.209Z",
+    "name": "Italy",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 41,
+  "fields": {
+    "created_at": "2022-07-25T15:41:00.854Z",
+    "updated_at": "2022-07-25T15:41:00.854Z",
+    "name": "Switzerland",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 42,
+  "fields": {
+    "created_at": "2022-07-25T15:41:05.940Z",
+    "updated_at": "2022-07-25T15:41:05.940Z",
+    "name": "Denmark",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 43,
+  "fields": {
+    "created_at": "2022-07-25T15:41:12.647Z",
+    "updated_at": "2022-07-25T15:41:12.647Z",
+    "name": "Germany",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 44,
+  "fields": {
+    "created_at": "2022-07-25T15:41:17.153Z",
+    "updated_at": "2022-07-25T15:41:17.153Z",
+    "name": "Poland",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 45,
+  "fields": {
+    "created_at": "2022-07-25T15:41:22.617Z",
+    "updated_at": "2022-07-25T15:41:22.617Z",
+    "name": "Sweden",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 46,
+  "fields": {
+    "created_at": "2022-07-25T15:41:26.954Z",
+    "updated_at": "2022-07-25T15:41:26.954Z",
+    "name": "Norway",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 47,
+  "fields": {
+    "created_at": "2022-07-25T15:41:31.056Z",
+    "updated_at": "2022-07-25T15:41:31.056Z",
+    "name": "Ireland",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 48,
+  "fields": {
+    "created_at": "2022-07-25T15:41:44.214Z",
+    "updated_at": "2022-07-25T15:41:44.214Z",
+    "name": "Croatia",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 49,
+  "fields": {
+    "created_at": "2022-07-25T15:41:48.007Z",
+    "updated_at": "2022-07-25T15:41:48.007Z",
+    "name": "Rumania",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 50,
+  "fields": {
+    "created_at": "2022-07-25T15:41:52.082Z",
+    "updated_at": "2022-07-25T15:41:52.082Z",
+    "name": "Russia",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 51,
+  "fields": {
+    "created_at": "2022-07-25T15:41:57.429Z",
+    "updated_at": "2022-07-25T15:41:57.429Z",
+    "name": "Ukraine",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 52,
+  "fields": {
+    "created_at": "2022-07-25T15:42:09.372Z",
+    "updated_at": "2022-07-25T15:42:09.372Z",
+    "name": "Egypt",
+    "location": "Africa"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 53,
+  "fields": {
+    "created_at": "2022-07-25T15:42:16.326Z",
+    "updated_at": "2022-07-25T15:42:16.326Z",
+    "name": "Ivory Coast",
+    "location": "Africa"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 54,
+  "fields": {
+    "created_at": "2022-07-25T15:43:19.006Z",
+    "updated_at": "2022-07-25T15:43:19.006Z",
+    "name": "Algeria",
+    "location": "Africa"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 55,
+  "fields": {
+    "created_at": "2022-07-25T15:43:26.244Z",
+    "updated_at": "2022-07-25T15:43:26.244Z",
+    "name": "Marrocco",
+    "location": "Africa"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 56,
+  "fields": {
+    "created_at": "2022-07-25T15:43:35.018Z",
+    "updated_at": "2022-07-25T15:43:35.018Z",
+    "name": "South Africa",
+    "location": "Africa"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 57,
+  "fields": {
+    "created_at": "2022-07-25T15:43:41.840Z",
+    "updated_at": "2022-07-25T15:43:41.840Z",
+    "name": "China",
+    "location": "Asia"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 58,
+  "fields": {
+    "created_at": "2022-07-25T15:44:00.688Z",
+    "updated_at": "2022-07-25T15:44:00.688Z",
+    "name": "Japan",
+    "location": "Asia"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 59,
+  "fields": {
+    "created_at": "2022-07-25T15:44:07.022Z",
+    "updated_at": "2022-07-25T15:44:07.022Z",
+    "name": "South Korea",
+    "location": "Asia"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 60,
+  "fields": {
+    "created_at": "2022-07-25T15:44:28.692Z",
+    "updated_at": "2022-07-25T15:44:28.692Z",
+    "name": "Australia",
+    "location": "Oceania"
+  }
+},
+{
+  "model": "prode.team",
+  "pk": 61,
+  "fields": {
+    "created_at": "2022-07-25T15:44:40.409Z",
+    "updated_at": "2022-07-25T15:44:40.409Z",
+    "name": "New Zealand",
+    "location": "Oceania"
+  }
+},
+{
+  "model": "prode.tournament",
   "pk": 1,
   "fields": {
-    "user": 5,
-    "score": 0
+    "created_at": "2022-07-25T15:28:21.782Z",
+    "updated_at": "2022-07-25T15:28:21.782Z",
+    "name": "Champions League",
+    "location": "Europe"
   }
 },
 {
-  "model": "prode.player",
+  "model": "prode.tournament",
+  "pk": 2,
+  "fields": {
+    "created_at": "2022-07-25T15:28:38.259Z",
+    "updated_at": "2022-07-25T15:28:38.259Z",
+    "name": "Copa Libertadores de America",
+    "location": "South America"
+  }
+},
+{
+  "model": "prode.tournament",
   "pk": 3,
   "fields": {
-    "user": 4,
-    "score": 0
+    "created_at": "2022-07-25T15:28:57.682Z",
+    "updated_at": "2022-07-25T15:28:57.682Z",
+    "name": "Europe League",
+    "location": "Europe"
+  }
+},
+{
+  "model": "prode.tournament",
+  "pk": 4,
+  "fields": {
+    "created_at": "2022-07-25T15:31:55.841Z",
+    "updated_at": "2022-07-25T15:31:55.841Z",
+    "name": "World Cup",
+    "location": "International"
   }
 }
 ]
