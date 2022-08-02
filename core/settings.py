@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     # Project applications
     "user",
     "prode",
+    # Automated Documentation
+    "drf_yasg",
 ]
 
 
